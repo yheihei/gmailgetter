@@ -84,14 +84,22 @@ class GmailAPI:
     return MessageList
 
 if __name__ == '__main__':
+  import sys
+
+  args = sys.argv
+  if len(args) != 6:
+    # 引数が足りない場合エラー終了
+    print('引数に DateFrom DateTo MessageFrom MessageTo Subject を指定してください');
+    sys.exit(1)
+
   api = GmailAPI()
   #パラメータは、任意の値を指定する
   messages = api.GetMessageList(
-    DateFrom='2019-09-11 22:00:00',
-    DateTo='2019-09-12 00:00:00',
-    MessageFrom='example@gmail.com',
-    MessageTo='example@gmail.com',
-    Subject='テスト'
+    DateFrom=args[1],    # '2019-09-11 22:00:00'
+    DateTo=args[2],      # '2019-09-12 00:00:00'
+    MessageFrom=args[3], # 'example@gmail.com'
+    MessageTo=args[4],   # 'example@gmail.com'
+    Subject=args[5]      # '仕様変更の件について'
     )
   #結果を出力
   for message in messages:
