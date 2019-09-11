@@ -103,4 +103,9 @@ if __name__ == '__main__':
     )
   #結果を出力
   for message in messages:
-    print(message)
+    # 指定のフォーマットで出力
+    print('@here')
+    print('```')
+    print(message['Body'])
+    print('```')
+    print('\n')
